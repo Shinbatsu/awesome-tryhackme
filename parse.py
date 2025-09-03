@@ -23,6 +23,20 @@ DIFFICULTY_COLORS = {
     "insane": "red"
 }
 
+DIFFICULTY_EMOJIS = {
+    "info": "ℹ️",
+    "easy": "🟢",
+    "novice":"🟢",
+    "medium": "🟡",
+    "intermediate": "🟡",
+    "hard": "🟠",
+    "insane": "🔴"
+}
+
+def format_difficulty(difficulty):
+    if not difficulty:
+        return "❔"
+    return f"{DIFFICULTY_EMOJIS.get(difficulty.lower(), "❔")} {difficulty.capitalize()}"
 
 async def fetch_json(session, url, params=None, retries=5, delay=20):
     for _ in range(retries):
@@ -45,13 +59,6 @@ async def fetch_scoreboard(session, room_code, limit=50):
     url = "https://tryhackme.com/api/v2/rooms/scoreboard"
     params = {"roomCode": room_code, "limit": limit, "page": 1}
     return await fetch_json(session, url, params) or {}
-
-
-def format_difficulty(difficulty):
-    if not difficulty:
-        return "-"
-    color = DIFFICULTY_COLORS.get(difficulty.lower(), "white")
-    return f'<span style="color: {color}">{difficulty.capitalize()}</span>'
 
 
 async def get_minimum_score(session, room_code):
