@@ -1,4 +1,4 @@
-# 🚀 Awesome Tryhackme
+# 🚀 Awesome TryHackMe
 
 List of all tryhackme rooms sorted by popularity. Contains badges, points, average time.
 
