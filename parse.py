@@ -94,9 +94,10 @@ async def export_rooms_markdown():
             scores = await asyncio.gather(*(get_minimum_score(session, room["code"]) for room in rooms))
 
             for room, score in zip(rooms, scores):
+                time = room.get('timeToComplete')
                 markdown += (
                     f"| [-] | [{room.get('title')}](https://tryhackme.com/room/{room.get('code')}) | "
-                    f"{format_difficulty(room.get('difficulty'))} | {room.get('timeToComplete')} | "
+                    f"{format_difficulty(room.get('difficulty'))} | {time if time else 'X'} | "
                     f"{room.get('type')} | {'Yes' if room.get('freeToUse') else 'No'} | "
                     f"{score if score else 'X'} |   |\n"
                 )
