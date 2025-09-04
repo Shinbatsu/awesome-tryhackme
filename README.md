@@ -2,6 +2,8 @@
 
 List of all tryhackme rooms sorted by popularity. Contains badges, points, average time.
 
+> [!NOTE]  
+> You can copy this template and mark solved rooms.
 
 ![Preview](assets/preview.jpg)
 
